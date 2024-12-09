@@ -1,2 +1,1 @@
-# Minitalk
-Minitalk-42
+# Pipex 42
