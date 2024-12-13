@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 07:11:34 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/13 21:08:18 by eaqrabaw         ###   ########.fr       */
+/*   Created: 2024/12/09 19:00:48 by eaqrabaw          #+#    #+#             */
+/*   Updated: 2024/12/10 08:32:24 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../includes/pipex.h"
 
-#include "./libft/headers/libft.h"
-#include <fcntl.h>
-
-
-typedef enum  e_bool
+int    ft_wrong_args()
 {
-    false,
-    true
-}   t_bool;
+   ft_putstr_fd("Invalid Number of Arguments\n", 2);
+   return (-1); 
+}
 
-//----------------------Error----------------------------------------------------------------------
-int             ft_wrong_args();
-
-
-#endif
+// t_bool      ft_check_files(char *file1, char *file2)
+// {
+   
+// }
