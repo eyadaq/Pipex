@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 22:23:35 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/11/30 03:01:43 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/13 21:10:23 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef enum  e_bool
+{
+    false,
+    true
+}					t_bool;
 
 size_t				ft_strlen(const char *s);
 

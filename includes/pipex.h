@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 07:11:34 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/13 21:08:18 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/13 21:25:07 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include "./libft/headers/libft.h"
 #include <fcntl.h>
 
-
-typedef enum  e_bool
+typedef struct s_operation
 {
-    false,
-    true
-}   t_bool;
-
+    char    *infile;
+    char    *outfile;
+    char    *cmd1;
+    char    *cmd2;
+}                   t_operation;
 //----------------------Error----------------------------------------------------------------------
 int             ft_wrong_args();
 

@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:00:48 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/10 08:32:24 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/13 21:09:46 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,3 @@ int    ft_wrong_args()
    return (-1); 
 }
 
-// t_bool      ft_check_files(char *file1, char *file2)
-// {
-   
-// }
