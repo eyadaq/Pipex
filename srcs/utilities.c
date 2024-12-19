@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:00:48 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/13 21:09:46 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/19 22:35:21 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-int    ft_wrong_args()
+void ft_error(const char *s)
 {
-   ft_putstr_fd("Invalid Number of Arguments\n", 2);
-   return (-1); 
+	perror(s);
+	exit(EXIT_FAILURE);
 }
 
