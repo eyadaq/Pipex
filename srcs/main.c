@@ -6,17 +6,17 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:58:16 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/22 22:42:25 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/22 23:33:06 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void ft_child_operation(char *argv[], char *envp[], int *fd)
+int ft_child_operation(char *argv[], char *envp[], int *fd)
 {
   int infile;
 	 
-	infile =open(fd[0], O_RDONLY, 0555);
+	infile = open(fd[0], O_RDONLY, 0555);
   if (fd == -1)
   {
     ft_error("Reading the file");
@@ -25,7 +25,7 @@ void ft_child_operation(char *argv[], char *envp[], int *fd)
   return (fd);
 }
 
-void           ft_parent_operation(char *argv[], char *envp[], int *fd)
+int           ft_parent_operation(char *argv[], char *envp[], int *fd)
 {
   int outfile;
 	 
