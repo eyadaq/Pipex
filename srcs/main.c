@@ -6,37 +6,52 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:58:16 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/22 23:33:06 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/27 15:02:25 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-int ft_child_operation(char *argv[], char *envp[], int *fd)
+char	ft_split_path(char *s, char *cmd)
 {
-  int infile;
-	 
-	infile = open(fd[0], O_RDONLY, 0555);
-  if (fd == -1)
-  {
-    ft_error("Reading the file");
-    return (fd);   
-  }
-  return (fd);
+	char	**pathes;
+
+	pathes = ft_split(s, ' ');
+	
 }
 
-int           ft_parent_operation(char *argv[], char *envp[], int *fd)
+char 	*ft_get_pathes(char *env[], char *cmd)
 {
-  int outfile;
-	 
-	outfile =open(fd[0], O_RDONLY, 0555);
-  if (fd == -1)
-  {
-    ft_error("Writing or creating the file");
-    return (fd);   
-  }
-  return (fd);
+	int		i;
+	char 	*path;
+	
+	i = 0;
+	while (env[i])
+	{
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
+		{
+			path = env[i];
+			break;
+		}
+		i++;
+	}
+	if (!env[i])
+    {
+        fprintf(stderr, "Error: PATH variable not found in the environment.\n");
+        return;
+    }
+	ft_split_path(path, cmd);
 }
+
+// int           ft_child_operation(char *argv[], char *envp[], int *fd)
+// {
+
+// }
+
+// int           ft_parent_operation(char *argv[], char *envp[], int *fd)
+// {
+ 
+// }
 
 int     main(int argc, char *argv[], char *envp[])
 {
@@ -51,9 +66,10 @@ int     main(int argc, char *argv[], char *envp[])
     if (pidid == -1)
       ft_error("Fork Failed");
     if (pidid == 0)
-      ft_child_operation(argv, envp,fd);
-    waitpid(pidid, NULL, 0);
-    ft_parent_operation(argv, envp, fd);
+		ft_get_pathes(envp, envp[2]);
+    //   ft_child_operation(argv, envp,fd);
+    // waitpid(pidid, NULL, 0);
+    // ft_parent_operation(argv, envp, fd);
     return (0);
   }
   else
