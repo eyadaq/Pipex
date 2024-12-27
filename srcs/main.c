@@ -6,13 +6,13 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:58:16 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/28 02:00:33 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/28 02:03:12 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void           ft_child_operation(char *argv[], char *envp[], int *fd)
+void	ft_child_operation(char *argv[], char *envp[], int *fd)
 {
 	int		outfile;
 
@@ -28,7 +28,7 @@ void           ft_child_operation(char *argv[], char *envp[], int *fd)
     return;
 }
 
-void           ft_parent_operation(char *argv[], char *envp[], int *fd)
+void    ft_parent_operation(char *argv[], char *envp[], int *fd)
 {
 	int		infile;
 
@@ -44,7 +44,7 @@ void           ft_parent_operation(char *argv[], char *envp[], int *fd)
 	return ;
 }
 
-int main(int argc, char *argv[], char *envp[])
+int     main(int argc, char *argv[], char *envp[])
 {
     int pidid;
     int fd[2];
