@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:00:48 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/28 00:48:22 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/28 01:59:24 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ char	*ft_find_executable(char *envp[], char *cmd)
     char	*temp;
     char	**paths;
 
-	
 	i = 0;
 	paths = ft_get_paths(envp);
 	while (paths[i])
@@ -68,4 +67,14 @@ char	*ft_find_executable(char *envp[], char *cmd)
 	}
 	ft_free_double(paths);
     return (NULL);
+}
+
+int			execute(char *cmd, char *argv[], char *envp[])
+{
+	char 	*exec;
+	
+	exec = ft_find_executable(envp, cmd); 
+	execve(exec, argv, envp);
+    free(exec);
+    return (-1);
 }
