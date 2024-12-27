@@ -6,16 +6,16 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:00:48 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/28 02:07:07 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/28 02:50:44 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void    ft_perror(const char *msg)
+void    ft_perror(const char *msg, int errno)
 {
 	perror(msg);
-	exit(EXIT_FAILURE);
+	exit(errno);
 }
 
 char 	**ft_get_paths(char *env[])
@@ -36,7 +36,7 @@ char 	**ft_get_paths(char *env[])
 	}
 	if (!env[i])
 	{
-		ft_perror("PATH variable not found in the environment.\n");
+		ft_perror("PATH variable not found in the environment.\n", 9);
 		exit(-1);
 	}
 	paths = ft_split((path + 5), ':');
@@ -69,16 +69,16 @@ char	*ft_find_executable(char *envp[], char *cmd)
     return (NULL);
 }
 
-int			execute(char *cmd, char *argv[], char *envp[])
+int			execute(char *cmd, char *envp[])
 {
 	char 	*exec;
-	
-	exec = ft_find_executable(envp, cmd); 
-	if (execve(exec, argv, envp) == -1)
-	{
-		free(exec);
-		ft_perror("command not found");
-	}
+	char	**full_cmd;
+
+	full_cmd = ft_split(cmd, ' ');
+	exec = ft_find_executable(envp, full_cmd[0]); 
+	execve(exec, full_cmd, envp);
+	ft_perror("command not found", 10);
     free(exec);
+	ft_free_double(full_cmd);
     return (-1);
 }
