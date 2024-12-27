@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 22:23:35 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/13 21:10:23 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/28 00:00:55 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,4 +135,6 @@ int					ft_putstr_printf(char *ptr);
 int					ft_putptr(void *ptr);
 
 int					ft_puthexa(unsigned int hexa, char x);
+
+void				ft_free_double(char **a);
 #endif

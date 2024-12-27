@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_freedouble.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 07:11:34 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/28 00:49:14 by eaqrabaw         ###   ########.fr       */
+/*   Created: 2024/12/27 23:59:50 by eaqrabaw          #+#    #+#             */
+/*   Updated: 2024/12/28 00:00:09 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../headers/libft.h"
 
-#include "./libft/headers/libft.h"
-#include <fcntl.h>
+void	ft_free_double(char **a)
+{
+    int		i;
 
-void                    ft_perror(const char *msg);
-void                    ft_parent_operation();
-void                    ft_child_operation();
-char	                *ft_find_executable(char *envp[], char *cmd);
-char 	                **ft_get_paths(char *env[]);
-
-
-#endif
+    i = 0;
+    while (a[i])
+    {
+        free(a[i]);
+        i++;
+    }
+    free(a);
+}
