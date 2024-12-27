@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:00:48 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/28 01:59:24 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/28 02:07:07 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ int			execute(char *cmd, char *argv[], char *envp[])
 	char 	*exec;
 	
 	exec = ft_find_executable(envp, cmd); 
-	execve(exec, argv, envp);
+	if (execve(exec, argv, envp) == -1)
+	{
+		free(exec);
+		ft_perror("command not found");
+	}
     free(exec);
     return (-1);
 }
