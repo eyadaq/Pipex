@@ -6,15 +6,15 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:58:16 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/31 23:23:17 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:32:14 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_cmd1_operation(char *argv[], char *envp[], int *fd)
+void	ft_cmd1_operation(char *argv[], char *envp[])
 {
-	int		outfile;
+	int   outfile;
 
 	outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (outfile < 0)
@@ -22,7 +22,7 @@ void	ft_cmd1_operation(char *argv[], char *envp[], int *fd)
     exit(0);
 }
 
-void    ft_cmd2_operation(char *argv[], char *envp[], int *fd)
+void    ft_cmd2_operation(char *argv[], char *envp[])
 {
 	int		infile;
 
