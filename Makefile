@@ -6,7 +6,7 @@
 #    By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 06:51:34 by eaqrabaw          #+#    #+#              #
-#    Updated: 2024/12/31 23:21:21 by eaqrabaw         ###   ########.fr        #
+#    Updated: 2025/01/01 02:16:20 by eaqrabaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ fclean : clean
 
 re : fclean all
 	$(MAKE) -C $(libftDir) re
-	
+
 $(libftDir)/libft.a:
 	$(MAKE) -C $(libftDir)
 

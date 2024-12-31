@@ -6,21 +6,15 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:58:16 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2025/01/01 00:38:06 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2025/01/01 02:18:11 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_perror(const char *msg, int err_code)
-{
-    perror(msg);
-    exit(err_code);
-}
-
 void	ft_cmd1_operation(char *argv[], char *envp[], int pipe_fd[])
 {
-    int infile;
+    int	infile;
 
     infile = open(argv[1], O_RDONLY);
     if (infile < 0)
@@ -29,13 +23,13 @@ void	ft_cmd1_operation(char *argv[], char *envp[], int pipe_fd[])
     dup2(pipe_fd[1], STDOUT_FILENO);
     close(pipe_fd[0]);
     close(infile);
-    execve(argv[2], &argv[2], envp);
-    ft_perror("Execve Failed", 5);
+
+    execute(argv[2], envp);
 }
 
 void	ft_cmd2_operation(char *argv[], char *envp[], int pipe_fd[])
 {
-    int outfile;
+    int	outfile;
 
     outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
     if (outfile < 0)
@@ -44,15 +38,17 @@ void	ft_cmd2_operation(char *argv[], char *envp[], int pipe_fd[])
     dup2(outfile, STDOUT_FILENO);
     close(pipe_fd[1]);
     close(outfile);
-    execve(argv[3], &argv[3], envp);
-    ft_perror("Execve Failed", 5);
+
+    execute(argv[3], envp);
 }
 
-int	main(int argc, char *argv[], char *envp[])
+
+int main(int argc, char *argv[], char *envp[])
 {
     int pipe_fd[2];
-    int     pid1;
-    int      pid2;
+    int pid1;
+    int pid2;
+    int status;
 
     if (argc != 5)
     {
@@ -73,7 +69,7 @@ int	main(int argc, char *argv[], char *envp[])
         ft_cmd2_operation(argv, envp, pipe_fd);
     close(pipe_fd[0]);
     close(pipe_fd[1]);
-    waitpid(pid1, NULL, 0);
-    waitpid(pid2, NULL, 0);
-    return (EXIT_SUCCESS);
+    waitpid(pid1, &status, 0);
+    waitpid(pid2, &status, 0);
+    return (WEXITSTATUS(status));
 }

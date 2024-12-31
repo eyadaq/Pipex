@@ -20,7 +20,7 @@ void	ft_perror(const char *msg, int errno)
 
 void	close_on_exit(int *fds, int fd_count)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i < fd_count)

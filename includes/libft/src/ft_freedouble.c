@@ -14,13 +14,13 @@
 
 void	ft_free_double(char **a)
 {
-    int		i;
+	int	i;
 
-    i = 0;
-    while (a[i])
-    {
-        free(a[i]);
-        i++;
-    }
-    free(a);
+	i = 0;
+	while (a[i])
+	{
+		free(a[i]);
+		i++;
+	}
+	free(a);
 }
