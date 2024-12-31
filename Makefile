@@ -6,14 +6,14 @@
 #    By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 06:51:34 by eaqrabaw          #+#    #+#              #
-#    Updated: 2024/12/22 21:20:21 by eaqrabaw         ###   ########.fr        #
+#    Updated: 2024/12/31 23:21:21 by eaqrabaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 Name = pipex
 CC = cc
 Flags = -Wall -Wextra -Werror
-SRCS = main utilities
+SRCS = main utilities extra_utils
 srcDir = srcs/
 incDir = includes/
 objDir = obj/

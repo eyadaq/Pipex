@@ -6,30 +6,11 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:00:48 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/31 22:36:18 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:21:39 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-
-void    ft_perror(const char *msg, int errno)
-{
-	perror(msg);
-	exit(errno);
-}
-
-void	close_on_exit(int *fds, int fd_count)
-{
-	int		i;
-
-	i = 0;
-	while (i < fd_count)
-	{
-		if (fds[i] != -1)
-			close(fds[i]);
-		i++;
-	}
-}
 
 char 	**ft_get_paths(char *env[])
 {
