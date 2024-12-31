@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:00:48 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/28 02:50:44 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/31 22:36:18 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,24 @@ void    ft_perror(const char *msg, int errno)
 	exit(errno);
 }
 
+void	close_on_exit(int *fds, int fd_count)
+{
+	int		i;
+
+	i = 0;
+	while (i < fd_count)
+	{
+		if (fds[i] != -1)
+			close(fds[i]);
+		i++;
+	}
+}
+
 char 	**ft_get_paths(char *env[])
 {
 	int		i;
-	char 	*path;
-	char	**paths;
+	char 		*path;
+	char			**paths;
 	
 	i = 0;
 	while (env[i])
@@ -46,9 +59,9 @@ char 	**ft_get_paths(char *env[])
 char	*ft_find_executable(char *envp[], char *cmd)
 {
     int		i;
-    char	*full_path;
-    char	*temp;
-    char	**paths;
+    char		*full_path;
+    char		*temp;
+    char			**paths;
 
 	i = 0;
 	paths = ft_get_paths(envp);
@@ -72,7 +85,7 @@ char	*ft_find_executable(char *envp[], char *cmd)
 int			execute(char *cmd, char *envp[])
 {
 	char 	*exec;
-	char	**full_cmd;
+	char		**full_cmd;
 
 	full_cmd = ft_split(cmd, ' ');
 	exec = ft_find_executable(envp, full_cmd[0]); 

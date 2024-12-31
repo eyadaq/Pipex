@@ -6,13 +6,13 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:58:16 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2024/12/30 11:45:03 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:16:23 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_child_operation(char *argv[], char *envp[], int *fd)
+void	ft_cmd1_operation(char *argv[], char *envp[], int *fd)
 {
 	int		outfile;
 
@@ -28,7 +28,7 @@ void	ft_child_operation(char *argv[], char *envp[], int *fd)
     exit(0);
 }
 
-void    ft_parent_operation(char *argv[], char *envp[], int *fd)
+void    ft_cmd2_operation(char *argv[], char *envp[], int *fd)
 {
 	int		infile;
 
@@ -48,30 +48,13 @@ void    ft_parent_operation(char *argv[], char *envp[], int *fd)
 
 int     main(int argc, char *argv[], char *envp[])
 {
-    int pidid;
-    int fd[2];
+    int     pipe_fd[2];
+    int     infile;
+    int     outfile;
 
-    if (argc == 5)
-    {
-        if (pipe(fd) == -1)
-            ft_perror("Pipe Failed", 2);
-        pidid = fork();
-        if (pidid == -1)
-            ft_perror("Fork Failed", 1);
-        if (pidid == 0)
-        {
-            ft_child_operation(argv, envp, fd);
-        }
-        else if (pidid != 0)
-	    {
-            ft_parent_operation(argv, envp, fd);
-            waitpid(pidid, NULL, 0);
-        }
-        return (0);
-    }
-    else
+    if (argc != 5)
     {
         ft_perror("Invalid input the input format is: ./pipex <file1> <cmd1> <cmd2> <file2>\n", -1);
-        return (0);
+        return (EXIT_FAILURE);
     }
 }
