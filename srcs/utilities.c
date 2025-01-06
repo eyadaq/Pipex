@@ -74,7 +74,7 @@ int	execute(char *cmd, char *envp[])
 		ft_free_double(full_cmd);
 		ft_perror("command not found", 127);
 	}
-	if (ft_strchr(full_cmd[0], '/') != NULL || ft_strchr(full_cmd[0], '\\') != NULL)
+	if (access(full_cmd[0], X_OK) == 0)
 		exec = ft_strdup(full_cmd[0]);
 	else
 		exec = ft_find_executable(envp, full_cmd[0]);
