@@ -21,7 +21,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-void	ft_cmd2_operation(char *argv[], char *envp[], int pipe_fd[]);
 void	first_child(char *argv[], char *envp[]);
 void	second_child(char *argv[], char *envp[]);
 void	ft_cmd1_operation(char *argv[], char *envp[], int pipe_fd[]);

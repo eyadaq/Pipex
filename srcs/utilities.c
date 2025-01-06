@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:00:48 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2025/01/01 01:44:38 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2025/01/06 18:58:04 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ int	execute(char *cmd, char *envp[])
 		ft_free_double(full_cmd);
 		ft_perror("command not found", 127);
 	}
-	exec = ft_find_executable(envp, full_cmd[0]);
+	if (ft_strchr(full_cmd[0], '/') != NULL || ft_strchr(full_cmd[0], '\\') != NULL)
+		exec = ft_strdup(full_cmd[0]);
+	else
+		exec = ft_find_executable(envp, full_cmd[0]);
 	if (!exec)
 	{
 		ft_free_double(full_cmd);

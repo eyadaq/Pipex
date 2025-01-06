@@ -29,7 +29,7 @@ $(Name) : $(OBJ) $(libftDir)/libft.a
 	$(CC) $(Flags) -o $(Name) $(OBJ) -L$(libftDir) -lft
 
 $(objDir)%.o: $(srcDir)%.c $(INC) | $(objDir)
-	@$(CC) $(Flags) -c $< -o $@
+	$(CC) $(Flags) -c $< -o $@
 
 $(objDir):
 	@mkdir -p $(objDir)
@@ -43,7 +43,6 @@ fclean : clean
 	$(MAKE) -C $(libftDir) fclean
 
 re : fclean all
-	$(MAKE) -C $(libftDir) re
 
 $(libftDir)/libft.a:
 	$(MAKE) -C $(libftDir)
