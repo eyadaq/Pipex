@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:00:48 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2025/01/06 18:58:04 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2025/01/09 00:10:07 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	**ft_get_paths(char *env[])
 		exit(-1);
 	}
 	paths = ft_split((path + 5), ':');
+	if (!paths)
+		ft_perror("Failed to split PATH variable.\n", 9);
 	return (paths);
 }
 
