@@ -24,7 +24,7 @@
 void	first_child(char *argv[], char *envp[]);
 void	second_child(char *argv[], char *envp[]);
 void	ft_cmd1_operation(char *argv[], char *envp[], int pipe_fd[]);
-void	ft_perror(const char *msg, int errno);
+void	ft_perror(char *msg, int errno);
 char	**ft_get_paths(char *env[]);
 char	*ft_find_executable(char *envp[], char *cmd);
 int		execute(char *cmd, char *envp[]);

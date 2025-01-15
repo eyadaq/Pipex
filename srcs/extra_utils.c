@@ -12,7 +12,7 @@
 
 #include "../includes/pipex.h"
 
-void	ft_perror(const char *msg, int errno)
+void	ft_perror(char *msg, int errno)
 {
 	if (errno == 42)
 	{
