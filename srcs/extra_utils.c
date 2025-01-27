@@ -14,7 +14,7 @@
 
 void	ft_perror(char *msg, int errno)
 {
-	if (errno == 42)
+	if (errno == 4242)
 	{
 		ft_putstr_fd(msg, 2);
 		exit(1);
