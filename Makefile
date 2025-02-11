@@ -6,7 +6,7 @@
 #    By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 06:51:34 by eaqrabaw          #+#    #+#              #
-#    Updated: 2025/02/11 07:16:47 by eaqrabaw         ###   ########.fr        #
+#    Updated: 2025/02/11 07:18:46 by eaqrabaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ $(objDir):
 	@echo "$(GREEN)Done $(ARROW)$(RESET)"
 
 clean :
-	@echo "$(RED)Deleting $(objDir)...$(RESET)"
+	@echo "$(RED)Deleting $(Name) $(objDir) file $(RESET)"
 	@rm -rf $(objDir)
 	@$(MAKE) -C $(libftDir) clean
 	@echo "$(RED)Done $(ARROW)$(RESET)"

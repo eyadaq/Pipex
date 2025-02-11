@@ -6,7 +6,7 @@
 #    By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/03 23:21:58 by eaqrabaw          #+#    #+#              #
-#    Updated: 2025/02/11 07:13:36 by eaqrabaw         ###   ########.fr        #
+#    Updated: 2025/02/11 07:32:36 by eaqrabaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,13 +95,13 @@ $(objDir):
 
 # Clean object files
 clean:
-	@echo "$(RED)Deleting $(objDir)...$(RESET)"
+	@echo "$(RED)Deleting  Libft $(objDir) files...$(RESET)"
 	@rm -rf $(objDir)
 	@echo "$(RED)Done $(ARROW)$(RESET)"
 
 # Clean everything (object files + library)
 fclean: clean
-	@echo "$(RED)Deleting $(NAME)...$(RESET)"
+	@echo "$(RED)Deleting $(Name)...$(RESET)"
 	@rm -f $(Name)
 	@echo "$(RED)Done $(ARROW)$(RESET)"
 
