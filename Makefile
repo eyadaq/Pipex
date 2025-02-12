@@ -6,59 +6,87 @@
 #    By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 06:51:34 by eaqrabaw          #+#    #+#              #
-#    Updated: 2025/02/11 07:18:46 by eaqrabaw         ###   ########.fr        #
+#    Updated: 2025/02/12 10:41:03 by eaqrabaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-Name = pipex
+NAME = pipex
 CC = cc
-Flags = -Wall -Wextra -Werror
-SRCS = main utilities extra_utils
-srcDir = srcs/
-incDir = includes/
-objDir = obj/
-libftDir = $(incDir)/libft
-INCs = pipex.h
-Srcs = $(addprefix $(srcDir), $(addsuffix .c, $(SRCS)))
-OBJ = $(Srcs:$(srcDir)%.c=$(objDir)%.o)
-INC = $(addprefix $(incDir), $(INCs))
-GREEN   	= \033[0;32m
-RED    		= \033[0;31m
-RESET   	= \033[0m
-ARROW   	= ✔
+CFLAGS = -Wall -Wextra -Werror
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+ARROW = ✔
 
-all : $(Name)
+INC = includes/pipex.h
+SRC_DIR = srcs/
+OBJ_DIR = obj/
+BONUS_DIR = bonus/
+B_OBJ_DIR = obj_bonus/
+LIBFT_DIR = includes/libft
 
-$(Name) : $(OBJ) $(libftDir)/libft.a
-	@echo "$(GREEN)Making $(Name)...$(RESET)"
-	@$(CC) $(Flags) -o $(Name) $(OBJ) -L$(libftDir) -lft
-	@echo "$(GREEN)Done $(ARROW)$(RESET)"
+# Source files (without path)
+SRCS = 	main\
+		extra_utils \
+		utilities
 
-$(objDir)%.o: $(srcDir)%.c $(INC) | $(objDir)
-	@echo "$(GREEN)Generating $@ $(RESET)"
-	@$(CC) $(FLAGS) -c $< -o $@
-	@echo "$(GREEN)Done $(ARROW)$(RESET)"
+OBJS = $(SRCS:%=$(OBJ_DIR)%.o)
 
-$(objDir):
-	@echo "$(GREEN)Creating OBJ_DIR$(RESET)"
-	@mkdir -p $(objDir)
-	@echo "$(GREEN)Done $(ARROW)$(RESET)"
+# Bonus source files (without path)
+BONUS_SRCS = bonus extra_utils utilities
+BONUS_OBJS = $(BONUS_SRCS:%=$(B_OBJ_DIR)%.o)
 
-clean :
-	@echo "$(RED)Deleting $(Name) $(objDir) file $(RESET)"
-	@rm -rf $(objDir)
-	@$(MAKE) -C $(libftDir) clean
+# Rules
+all: $(NAME)
+
+$(NAME): $(OBJS) $(LIBFT_DIR)/libft.a
+	@echo "$(GREEN)Compiling $(NAME)...$(RESET)"
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft
+	@echo "$(GREEN)Done!$(RESET)"
+
+# Ensure OBJ_DIR exists before compilation
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC) | $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
+	@echo "$(GREEN)Compiling $< $(RESET)"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+bonus: $(BONUS_OBJS) $(LIBFT_DIR)/libft.a
+	@echo "$(GREEN)Compiling $(NAME) (bonus)...$(RESET)"
+	@$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJS) -L$(LIBFT_DIR) -lft
+	@echo "$(GREEN)Done!$(RESET)"
+
+# Ensure B_OBJ_DIR exists before bonus compilation
+$(B_OBJ_DIR)%.o: $(BONUS_DIR)%.c $(INC) | $(B_OBJ_DIR)
+	@mkdir -p $(B_OBJ_DIR)
+	@echo "$(GREEN)Compiling $< $(RESET)"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(B_OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC) | $(B_OBJ_DIR)
+	@mkdir -p $(B_OBJ_DIR)
+	@echo "$(GREEN)Compiling $< $(RESET)"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(B_OBJ_DIR):
+	@mkdir -p $(B_OBJ_DIR)
+
+$(LIBFT_DIR)/libft.a:
+	@$(MAKE) -C $(LIBFT_DIR)
+
+clean:
+	@echo "$(RED)Cleaning object files...$(RESET)"
+	@rm -rf $(OBJ_DIR) $(B_OBJ_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) clean
 	@echo "$(RED)Done $(ARROW)$(RESET)"
 
-fclean : clean
-	@echo "$(RED)Deleting $(Name)...$(RESET)"
-	@rm -f $(Name)
-	@$(MAKE) -C $(libftDir) fclean
+fclean: clean
+	@echo "$(RED)Removing $(NAME)...$(RESET)"
+	@rm -f $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@echo "$(RED)Done $(ARROW)$(RESET)"
 
-re : fclean all
+re: fclean all
 
-$(libftDir)/libft.a:
-	@$(MAKE) -C $(libftDir)
-
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re bonus

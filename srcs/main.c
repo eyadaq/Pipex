@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:58:16 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2025/01/09 00:12:14 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2025/02/12 07:46:32 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int argc, char *argv[], char *envp[])
 	int	status;
 
 	if (argc != 5)
-		ft_perror("Input format: ./pipex <file1> <cmd1> <cmd2> <file2>\n", 4242);
+		ft_perror("Input format:./pipex <file1> <cmd1> <cmd2> <file2>\n", 4242);
 	if (pipe(pipe_fd) == -1)
 		ft_perror("Pipe Failed", 2);
 	pid[0] = fork();
