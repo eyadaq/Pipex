@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:58:16 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2025/02/12 07:46:32 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2025/02/13 09:15:31 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	ft_cmd1_operation(char *argv[], char *envp[], int pipe_fd[])
 		ft_perror("Open Failed", 1);
 	}
 	dup2(infile, STDIN_FILENO);
-	dup2(pipe_fd[1], STDOUT_FILENO);
-	close(pipe_fd[0]);
-	close(pipe_fd[1]);
+	dup2(pipe_fd[Out], STDOUT_FILENO);
+	close(pipe_fd[In]);
+	close(pipe_fd[Out]);
 	close(infile);
 	execute(argv[2], envp);
 }
@@ -40,10 +40,10 @@ void	ft_cmd2_operation(char *argv[], char *envp[], int pipe_fd[])
 		close_on_exit(pipe_fd, 2);
 		ft_perror("File Creation Failed", 1);
 	}
-	dup2(pipe_fd[0], STDIN_FILENO);
+	dup2(pipe_fd[In], STDIN_FILENO);
 	dup2(outfile, STDOUT_FILENO);
-	close(pipe_fd[0]);
-	close(pipe_fd[1]);
+	close(pipe_fd[In]);
+	close(pipe_fd[Out]);
 	close(outfile);
 	execute(argv[3], envp);
 }

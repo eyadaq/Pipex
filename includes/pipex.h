@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 07:11:34 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2025/01/01 02:13:13 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2025/02/13 09:30:07 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
+
+typedef enum fds
+{
+	In,
+	Out
+} e_fds;
 
 void	first_child(char *argv[], char *envp[]);
 void	second_child(char *argv[], char *envp[]);
