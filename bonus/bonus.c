@@ -6,7 +6,7 @@
 /*   By: eaqrabaw <eaqrabaw@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 07:47:40 by eaqrabaw          #+#    #+#             */
-/*   Updated: 2025/02/13 07:49:17 by eaqrabaw         ###   ########.fr       */
+/*   Updated: 2025/02/13 08:04:09 by eaqrabaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,30 @@ int get_fd(char *file, int mode)
 	return fd;
 }
 
+void	ft_bonus_cmd1_operation(int	infile, char *arg, char **envp)
+{
+	if (infile < 0)
+		ft_perror("Open Failed", 1);
+	
+}
 
+void	ft_bonus_cmd2_operation(int	outfile, char *arg, char **envp)
+{
+	if (outfile < 0)
+		ft_perror("File Creation Failed", 1);
+
+}
+
+int	main(int argc, char *argv[], char *envp[])
+{
+	int		fd_in;
+	int		fd_out;
+	int		fd_input;
+	int		i;
+	pid_t 	pid;
+
+	if (argc < 5)
+		ft_perror("Invalid input",4242);
+	fd_in = get_fd(argv[1], 0);
+	fd_out = get_fd(argv[argc - 1], 1);
+}
