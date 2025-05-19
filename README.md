@@ -137,4 +137,3 @@ The `cat` command reads from `infile` and passes it to `wc -w`, which counts wor
 
 > 🛠 Developed as part of the 42 Network curriculum to master Unix piping and process handling.
 
-```
